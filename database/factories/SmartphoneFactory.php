@@ -20,6 +20,7 @@ class SmartphoneFactory extends Factory
             'device_name' => $this->faker->word(),
             'brand' => $this->faker->word(),
             'release_date' => $this->faker->dateTime(),
+            'image' => 'no-image.png',
             'device_type_id' => '1'
         ];
     }

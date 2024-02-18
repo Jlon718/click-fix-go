@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreign('device_type_id')->references('id')->on('device_types')->onDelete('cascade');
             $table->string('device_name');
             $table->string('brand');
+            $table->string('image');
             $table->date('release_date');
             $table->timestamps();
         });

@@ -8,7 +8,6 @@
         @php
             $devices = [
                 ['image' => 'laptop.png', 'title' => 'Laptop', 'description' => 'Expert repairs for all major brands and models.', 'link' => '/laptops'],
-                ['image' => 'desktop.png', 'title' => 'Desktop', 'description' => 'From software issues to hardware upgrades, we\'ve got you covered.', 'link' => '/desktops'],
                 ['image' => 'cellphone.png', 'title' => 'Cellphone', 'description' => 'Cracked screens, battery replacements, and more for your mobile device.', 'link' => '/cellphones'],
                 ['image' => 'tablet.png', 'title' => 'Tablet', 'description' => 'Get your tablet back to peak performance with our expert repairs.', 'link' => '/tablets'],
                 ['image' => 'mac.png', 'title' => 'Mac', 'description' => 'We specialize in repairs and cleaning for all Apple Mac devices.', 'link' => '/macs'],
@@ -22,7 +21,7 @@
                         <div class="card-body">
                             <h3 class="card-title">{{ $device['title'] }}</h3>
                             <p class="card-text">{{ $device['description'] }}</p>
-                            <a href="{{ $device['link'] }}" class="btn btn-primary">See {{ $device['title'] }} Services</a>
+                            <a href="/home/smartphones" class="btn btn-primary">See {{ $device['title'] }} Services</a>
                         </div>
                     </div>
                 </div>
