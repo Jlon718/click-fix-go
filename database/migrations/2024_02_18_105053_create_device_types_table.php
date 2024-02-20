@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('device_types', function (Blueprint $table) {
             $table->id();
             $table->string('device_type');
+            $table->string('image');
             $table->timestamps();
         });
     }

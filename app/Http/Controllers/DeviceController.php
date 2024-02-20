@@ -3,23 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Smartphone;
 use View;
 use DB;
 
-
-
-class SmartphoneController extends Controller
+class DeviceController extends Controller
 {
-    public function index($id){
-        $smartphones = Smartphone::where('brand_id', $id)->get();
-        return View::make('devices.smartphones.index', compact('smartphones'));
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $types = DB::table('device_types')->get();
+        return View::make('home', compact('types'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
-        $smartphones = Smartphone::all();
-        return View::make('devices.smartphone.create', compact('smartphones'));
+        //
     }
 
     /**

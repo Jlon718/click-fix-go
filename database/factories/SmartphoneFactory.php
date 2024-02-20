@@ -21,7 +21,8 @@ class SmartphoneFactory extends Factory
             'brand' => $this->faker->word(),
             'release_date' => $this->faker->dateTime(),
             'image' => 'no-image.png',
-            'device_type_id' => '1'
+            'device_type_id' => '1',
+            'brand_id' =>$this->faker->numberBetween(1,3)
         ];
     }
 }
