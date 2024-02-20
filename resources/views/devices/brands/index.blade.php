@@ -12,7 +12,7 @@
                         <img src="/images/{{ $brand->image }}" alt="{{ $brand->brand_name }}" class="card-img-top">
                         <div class="card-body">
                             <h3 class="card-title">{{ $brand->brand_name }}</h3>
-                            <a href="/home/brands/{{$brand->id}}" class="btn btn-primary">See {{ $brand->brand_name}} Services</a>
+                            <a href="/home/smartphones/{{$brand->id}}" class="btn btn-primary">See {{ $brand->brand_name}} Services</a>
                         </div>
                     </div>
                 </div>

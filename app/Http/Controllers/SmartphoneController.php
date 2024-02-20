@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Smartphone;
+use App\Models\Brand;
+use App\Models\Device;
 use View;
 use DB;
 
@@ -18,8 +20,9 @@ class SmartphoneController extends Controller
 
     public function create()
     {
-        $smartphones = Smartphone::all();
-        return View::make('devices.smartphone.create', compact('smartphones'));
+        $brands = DB::table('brands')->get();
+        $devices = DB::table('device_types')->get();
+        return View::make('devices.smartphones.create', compact('brands','devices'));
     }
 
     /**

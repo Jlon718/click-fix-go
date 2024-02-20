@@ -22,7 +22,9 @@ Route::get('/', function () {
 
 Route::get('/home', [DeviceController::class, 'index']);
 Route::get('/home/smartphones', [BrandController::class, 'index']);
-Route::get('/home/brands/{id}', [SmartphoneController::class, 'index']);
+
+Route::get('/home/smartphones/{id}', [SmartphoneController::class, 'index']);
+Route::get('/home/smartphones/create', [SmartphoneController::class, 'create'])->name('smartphones.create');
 
 Route::get('/login', function () {
     return view('login');
@@ -31,3 +33,7 @@ Route::get('/logout', function () {
     return view('logout');
 });
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
