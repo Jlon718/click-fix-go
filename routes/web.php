@@ -24,9 +24,12 @@ Route::get('/homepage', [DeviceController::class, 'index']);
 Route::get('/home/smartphones', [BrandController::class, 'index']);
 Route::get('/home/smartphones/{id}', [SmartphoneController::class, 'index'])->name('smartphone.index');
 
-Route::get('/smartphones/create', [SmartphoneController::class, 'create'])->name('smartphones.create');
-Route::post('/smartphones/store', [SmartphoneController::class, 'store'])->name('smartphones.store');
-
+Route::prefix('/smartphones')->group(function () {
+Route::get('/create', [SmartphoneController::class, 'create'])->name('smartphones.create');
+Route::post('/store', [SmartphoneController::class, 'store'])->name('smartphones.store');
+Route::get('/{id}/edit', [SmartphoneController::class, 'edit'])->name('smartphones.edit');
+Route::put('/{id}/update', [SmartphoneController::class, 'update'])->name('smartphones.update');
+});
 Route::get('/login', function () {
     return view('login');
 });

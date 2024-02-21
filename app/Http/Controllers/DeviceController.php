@@ -13,7 +13,7 @@ class DeviceController extends Controller
      */
     public function index()
     {
-        $types = DB::table('device_types')->get();
+        $types = DB::table('devices')->get();
         return View::make('home', compact('types'));
     }
 

@@ -14,6 +14,8 @@
                             <h3 class="card-title">{{ $smartphone->device_name }}</h3>
                             <p class="card-text">Date released: {{ $smartphone->release_date }}</p>
                             <a href="" class="btn btn-primary">See {{ $smartphone->device_name }} Services</a>
+                            <a href="/smartphones/{{$smartphone->id}}/edit" class="btn btn-primary">Edit</a>
+                            <a href="/smartphones/{{$smartphone->id}}/edit" class="btn btn-primary">Edit</a>
                         </div>
                     </div>
                 </div>

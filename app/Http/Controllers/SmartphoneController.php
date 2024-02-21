@@ -23,7 +23,7 @@ class SmartphoneController extends Controller
     public function create()
     {
         $brands = DB::table('brands')->get();
-        $devices = DB::table('device_types')->get();
+        $devices = DB::table('devices')->get();
         return View::make('devices.smartphones.create', compact('brands','devices'));
     }
 
@@ -32,6 +32,7 @@ class SmartphoneController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request);
         $rules = [
             'image' => 'mimes:jpg,bmp,png',
         ];
@@ -65,27 +66,67 @@ class SmartphoneController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $smartphone = Smartphone::find($id);
+        $brands = Brand::pluck('brand_name', 'id')->all();
+        $brand =Brand::find($smartphone->brand_id);
+        $devices = Device::pluck('device_type','id')->all();
+        $device = Device::find($smartphone->device_type_id);
+
+        return View::make('devices.smartphones.edit', compact('smartphone', 'brands', 'brand', 'devices', 'device'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        //dd($request);
+        $rules = [
+            'image' => 'mimes:jpg,bmp,png',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        if($request->file('image')) {
+            $path = Storage::putFileAs('public/images/smartphones',
+                $request->file('image'),
+                $request->file('image')->getClientOriginalName()
+            );
+            //$path = $request->file('image')->storeAs('public/images/smartphones', $request->file('image')->getClientOriginalName());
+            // Generate the complete URL for the image
+            $imageURL = asset(str_replace('public', 'storage', $path)); 
+            $brand = Brand::findOrFail($request->brand_id);
+            $smartphone = Smartphone::where('id', $id)->update([
+                'device_name' => $request->device_name,
+                'brand' => $brand->brand_name,
+                'brand_id' => $request->brand_id,
+                'release_date' => $request->release_date,
+                'device_type_id' => $request->device_type_id,
+                'image' => $imageURL
+            ]);
+        }
+        else {
+            $brand = Brand::findOrFail($request->brand_id);
+            $smartphone = Smartphone::where('id', $id)->update([
+                'device_name' => $request->device_name,
+                'brand' => $brand->brand_name,
+                'brand_id' => $request->brand_id,
+                'release_date' => $request->release_date,
+                'device_type_id' => $request->device_type_id,
+            ]);
+        }
+        // dd($request->file('img_path'));
+        return redirect()->route('smartphone.index', ['id' => $request->brand_id]);
     }
 
     /**
