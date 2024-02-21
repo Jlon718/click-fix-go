@@ -9,7 +9,7 @@
             @foreach ($brands as $brand)
                 <div class="col-md-4 col-sm-6 smartphone-card">
                     <div class="card">
-                        <img src="/images/{{ $brand->image }}" alt="{{ $brand->brand_name }}" class="card-img-top">
+                        <img src="{{ url($brand->image) }}" alt="{{ $brand->brand_name }}" class="card-img-top">
                         <div class="card-body">
                             <h3 class="card-title">{{ $brand->brand_name }}</h3>
                             <a href="/home/smartphones/{{$brand->id}}" class="btn btn-primary">See {{ $brand->brand_name}} Services</a>

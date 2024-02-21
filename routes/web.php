@@ -20,11 +20,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', [DeviceController::class, 'index']);
+Route::get('/homepage', [DeviceController::class, 'index']);
 Route::get('/home/smartphones', [BrandController::class, 'index']);
+Route::get('/home/smartphones/{id}', [SmartphoneController::class, 'index'])->name('smartphone.index');
 
-Route::get('/home/smartphones/{id}', [SmartphoneController::class, 'index']);
-Route::get('/home/smartphones/create', [SmartphoneController::class, 'create'])->name('smartphones.create');
+Route::get('/smartphones/create', [SmartphoneController::class, 'create'])->name('smartphones.create');
+Route::post('/smartphones/store', [SmartphoneController::class, 'store'])->name('smartphones.store');
 
 Route::get('/login', function () {
     return view('login');

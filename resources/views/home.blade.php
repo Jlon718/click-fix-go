@@ -18,6 +18,16 @@
                     </div>
                 </div>
             @endforeach
+            <div class="col-md-4 col-sm-6 device-card">
+                <div class="card">
+                    <img src="/images/" alt="Add phones" class="card-img-top">
+                    <div class="card-body">
+                        <h3 class="card-title">Add smartphones</h3>
+                        <p class="card-text">Add smartphones </p>
+                        <a href="/smartphones/create" class="btn btn-primary">Add Smartphones</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

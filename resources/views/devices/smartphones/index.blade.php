@@ -9,7 +9,7 @@
             @foreach ($smartphones as $smartphone)
                 <div class="col-md-4 col-sm-6 smartphone-card">
                     <div class="card">
-                        <img src="/images/{{ $smartphone->image }}" alt="{{ $smartphone->device_name }}" class="card-img-top">
+                        <img src="{{ url($smartphone->image) }}" alt="{{ $smartphone->device_name }}" class="card-img-top">
                         <div class="card-body">
                             <h3 class="card-title">{{ $smartphone->device_name }}</h3>
                             <p class="card-text">Date released: {{ $smartphone->release_date }}</p>
