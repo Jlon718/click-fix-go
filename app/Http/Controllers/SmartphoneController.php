@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Smartphone;
+use Validator;
 use App\Models\Brand;
 use App\Models\Device;
-use Illuminate\Support\Facades\View;
+use App\Models\Smartphone;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Validator;
-use Storage;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Storage;
 
 
 
@@ -32,7 +32,6 @@ class SmartphoneController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request);
         $rules = [
             'image' => 'mimes:jpg,bmp,png',
         ];
@@ -61,8 +60,54 @@ class SmartphoneController extends Controller
 
         $smartphone->image = 'storage/images/smartphones/' . $request->file('image')->getClientOriginalName();
         $smartphone->save();
-        // dd($request->file('img_path'));
         return redirect()->route('smartphone.index', ['id' => $request->brand_id]);
+        // //dd($request);
+        // $rules = [
+        //     'image' => 'mimes:jpg,bmp,png',
+        // ];
+
+        // $validator = Validator::make($request->all(), $rules);
+
+        // if ($validator->fails()) {
+        //     return redirect()->back()
+        //         ->withErrors($validator)
+        //         ->withInput();
+        // }
+
+        // $brand = Brand::findOrFail($request->brand_id);
+        // $smartphone = new Smartphone();
+        // $smartphone->device_name = $request->device_name;
+        // $smartphone->brand = $brand->brand_name;
+        // $smartphone->brand_id = $request->brand_id;
+        // $smartphone->release_date = $request->release_date;
+        // $smartphone->device_type_id = $request->device_type_id;
+
+        // $path = Storage::putFileAs(
+        //     '/public/images/smartphones',
+        //     $request->file('image'),
+        //     $request->file('image')->getClientOriginalName()
+        // );
+
+        // // $file = $request->file('image');
+        
+        // //         $destinationPath = 'public/images/smartphones'; // Destination directory
+        // //         $fileName = $file->getClientOriginalName(); // Original file name
+        
+        // //         // Move the uploaded file to the destination directory
+        // //         $moved = move_uploaded_file($fileName, $destinationPath.'/'.$fileName);
+        
+        // //         if ($moved) {
+        // //             // File was successfully moved
+        // //             $path = $destinationPath.'/'.$fileName;
+        // //         } else {
+        // //             // Failed to move the file
+        // //             $path = null;
+        // //         }
+
+        // $smartphone->image = 'storage/app/public/images/smartphones/' . $request->file('image')->getClientOriginalName();
+        // $smartphone->save();
+        // // dd($request->file('img_path'));
+        // return redirect()->route('smartphone.index', ['id' => $request->brand_id]);
     }
 
     /**
