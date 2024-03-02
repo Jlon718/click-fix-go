@@ -123,7 +123,7 @@ body, html {
                     @auth
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('home') }}">Home</a>
+                                <a class="nav-link" href="/homepage">Home</a>
                             </li>
                             </ul>
                     @endauth

@@ -12,11 +12,21 @@
                         <img src="{{ url($brand->image) }}" alt="{{ $brand->brand_name }}" class="card-img-top">
                         <div class="card-body">
                             <h3 class="card-title">{{ $brand->brand_name }}</h3>
-                            <a href="/home/smartphones/{{$brand->id}}" class="btn btn-primary">See {{ $brand->brand_name}} Services</a>
+                            <a href="/smartphones/index/{{$brand->id}}" class="btn btn-primary">See {{ $brand->brand_name}} Services</a>
                         </div>
                     </div>
                 </div>
             @endforeach
+            <div class="col-md-4 col-sm-6 device-card">
+                <div class="card">
+                    <img src="/images/" alt="Add phones" class="card-img-top">
+                    <div class="card-body">
+                        <h3 class="card-title">Add smartphones</h3>
+                        <p class="card-text">Add smartphones </p>
+                        <a href="/smartphones/create" class="btn btn-primary">Add Smartphones</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

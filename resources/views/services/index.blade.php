@@ -5,18 +5,26 @@
     <p class="text-center mb-5">Choose your device type to explore our services:</p>
     <div class="device-gallery">
         <div class="row">
-            @foreach ($types as $type)
+            @foreach ($services as $service)
                 <div class="col-md-4 col-sm-6 device-card">
                     <div class="card">
-                        <img src="/images/{{ $type->image }}" alt="{{ $type->device_type }}" class="card-img-top">
                         <div class="card-body">
-                            <h3 class="card-title">{{ $type->device_type }}</h3>
+                            <h3 class="card-title">{{ $service->service_type }}</h3>
                             <p class="card-text">Expert repairs for all major brands and models.</p>
-                            <a href="/services/{{$type->device_id}}" class="btn btn-primary">See {{ $type->device_type }} Services</a>
                         </div>
                     </div>
                 </div>
             @endforeach
+            <div class="col-md-4 col-sm-6 device-card">
+                <div class="card">
+                    <img src="/images/" alt="Add phones" class="card-img-top">
+                    <div class="card-body">
+                        <h3 class="card-title">Book an appointment</h3>
+                        <p class="card-text">For easier and faster transaction </p>
+                        <a href="/queque/{{$service->device_id}}" class="btn btn-primary">Click here</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

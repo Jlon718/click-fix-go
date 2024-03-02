@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\SmartphoneController;
-use App\Http\Controllers\BrandController;
+use App\Http\Controllers\DeviceserviceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,8 +20,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/homepage', [DeviceController::class, 'index']);
-Route::get('/home/smartphones', [BrandController::class, 'index']);
+Route::get('/homepage', [DeviceController::class, 'index'])->name('homepage.index');
+
 Route::get('/home/smartphones/{id}', [SmartphoneController::class, 'index'])->name('smartphone.index');
 
 Route::prefix('/smartphones')->group(function () {
@@ -30,6 +30,14 @@ Route::post('/store', [SmartphoneController::class, 'store'])->name('smartphones
 Route::get('/{id}/edit', [SmartphoneController::class, 'edit'])->name('smartphones.edit');
 Route::put('/{id}/update', [SmartphoneController::class, 'update'])->name('smartphones.update');
 });
+
+Route::prefix('/services')->group(function () {
+    Route::get('/{id}', [DeviceserviceController::class, 'index'])->name('smartphones.index');
+    Route::get('/create', [SmartphoneController::class, 'create'])->name('smartphones.create');
+});
+
+Route::get('/queue/{id}', [SmartphoneController::class, 'create'])->name('queue.create');
+
 Route::get('/login', function () {
     return view('login');
 });
