@@ -3,6 +3,7 @@
 use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\SmartphoneController;
 use App\Http\Controllers\DeviceserviceController;
+use App\Http\Controllers\QueueController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,11 @@ Route::get('/', function () {
 
 Route::get('/homepage', [DeviceController::class, 'index'])->name('homepage.index');
 
+Route::prefix('/queue')->group(function () {
+    Route::get('/create/{id}', [QueueController::class, 'create'])->name('queue.create');
+    Route::post('/store', [QueueController::class, 'store'])->name('queue.store');
+});
+
 Route::get('/home/smartphones/{id}', [SmartphoneController::class, 'index'])->name('smartphone.index');
 
 Route::prefix('/smartphones')->group(function () {
@@ -36,7 +42,8 @@ Route::prefix('/services')->group(function () {
     Route::get('/create', [SmartphoneController::class, 'create'])->name('smartphones.create');
 });
 
-Route::get('/queue/{id}', [SmartphoneController::class, 'create'])->name('queue.create');
+
+
 
 Route::get('/login', function () {
     return view('login');

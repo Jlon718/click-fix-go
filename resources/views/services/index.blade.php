@@ -21,7 +21,7 @@
                     <div class="card-body">
                         <h3 class="card-title">Book an appointment</h3>
                         <p class="card-text">For easier and faster transaction </p>
-                        <a href="/queque/{{$service->device_id}}" class="btn btn-primary">Click here</a>
+                        <a href="/queue/create/{{ $service->device_id }}" class="btn btn-primary">Click here</a>
                     </div>
                 </div>
             </div>
