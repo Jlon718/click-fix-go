@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class SmartphoneFactory extends Factory
+class DeviceFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,12 +17,8 @@ class SmartphoneFactory extends Factory
     public function definition(): array
     {
         return [
-            'device_name' => $this->faker->word(),
-            'brand' => $this->faker->word(),
-            'release_date' => $this->faker->dateTime(),
+            'device_type' => $this->faker->word(),
             'image' => 'no-image.png',
-            'device_type_id' => '1',
-            'brand_id' =>$this->faker->numberBetween(1,3)
         ];
     }
 }
