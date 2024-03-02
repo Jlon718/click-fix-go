@@ -4,6 +4,7 @@ use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\SmartphoneController;
 use App\Http\Controllers\DeviceserviceController;
 use App\Http\Controllers\QueueController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,10 +18,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/homepage', [DeviceController::class, 'index'])->name('homepage.index');
 
 Route::prefix('/queue')->group(function () {
@@ -28,11 +25,12 @@ Route::prefix('/queue')->group(function () {
     Route::post('/store', [QueueController::class, 'store'])->name('queue.store');
 });
 
-Route::get('/home/smartphones/{id}', [SmartphoneController::class, 'index'])->name('smartphone.index');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
-Route::prefix('/smartphones')->group(function () {
-Route::get('/create', [SmartphoneController::class, 'create'])->name('smartphones.create');
-Route::post('/store', [SmartphoneController::class, 'store'])->name('smartphones.store');
+Route::prefix('/devices')->group(function () {
+Route::get('/index', [DeviceController::class, 'indexAdmin'])->name('devices.index');
+Route::get('/create', [DeviceController::class, 'create'])->name('devices.create');
+Route::post('/store', [DeviceController::class, 'store'])->name('devices.store');
 Route::get('/{id}/edit', [SmartphoneController::class, 'edit'])->name('smartphones.edit');
 Route::put('/{id}/update', [SmartphoneController::class, 'update'])->name('smartphones.update');
 });

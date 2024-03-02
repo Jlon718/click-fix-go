@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
+use App\Models\Device;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Storage;
 
 class DeviceController extends Controller
 {
@@ -22,7 +25,7 @@ class DeviceController extends Controller
      */
     public function create()
     {
-        //
+        return View::make('devices.create');
     }
 
     /**
@@ -30,7 +33,28 @@ class DeviceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'image' => 'mimes:jpg,bmp,png',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $path = Storage::putFileAs(
+            'public/images/devices',
+            $request->file('image'),
+            $request->file('image')->getClientOriginalName()
+        );
+
+        $device = new Device();
+        $device->device_type = $request->device_type;
+        $device->image = 'storage/images/devices/' . $request->file('image')->getClientOriginalName();
+        $device->save();
     }
 
     /**
@@ -63,5 +87,11 @@ class DeviceController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function indexAdmin()
+    {
+        $types = DB::table('devices')->get();
+        return View::make('devices.index', compact('types'));
     }
 }
