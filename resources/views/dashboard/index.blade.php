@@ -28,7 +28,7 @@
                     <div class="card-body">
                         <h3 class="card-title">Manage Tickets</h3>
                         <p class="card-text">Upcoming tickets, fixing tickets, and finishe tickets</p>
-                        <a href="/services/index" class="btn btn-primary">Click here</a>
+                        <a href="/queues/index" class="btn btn-primary">Click here</a>
                     </div>
                 </div>
             </div>

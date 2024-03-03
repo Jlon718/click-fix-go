@@ -5,12 +5,15 @@
     <p class="text-center mb-5">Choose your device type to explore our services:</p>
     <div class="device-gallery">
         <div class="row">
-            @foreach ($services as $service)
+            @foreach ($tickets as $ticket)
                 <div class="col-md-4 col-sm-6 device-card">
                     <div class="card">
                         <div class="card-body">
-                            <h3 class="card-title">{{ $service->service_type }}</h3>
-                            <p class="card-text">Expert repairs for all major brands and models.</p>
+                            <h3 class="card-title">{{ $ticket->device_type }}</h3>
+                            <p class="card-text">Issue: {{ $ticket->service_type }}</p>
+                            <p class="card-text">Status: {{ $ticket->status }}</p>
+                            <a href="/queues/{{$ticket->ticket_id}}/tickets/repair" class="btn btn-primary">Repair</a>
+                            <a href="/queues/{{$ticket->ticket_id}}/tickets/finish" class="btn btn-primary">Finish</a>
                         </div>
                     </div>
                 </div>

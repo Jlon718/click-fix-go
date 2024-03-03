@@ -44,4 +44,11 @@ class QueueController extends Controller
         $ticket->save();
         } 
     }
+
+    public function index()
+    {
+        $tickets = DB::table('tickets')->get();
+        $queues = DB::table('queues')->pluck('queue_id')->toArray();
+        return View::make('queues.index', compact('tickets', 'queues'));
+    }
 }
