@@ -44,6 +44,15 @@
             <div class="col-md-4 col-sm-6 device-card">
                 <div class="card">
                     <div class="card-body">
+                        <h3 class="card-title">Manage supplier</h3>
+                        <p class="card-text">CRUD Supplier</p>
+                        <a href="/services/index" class="btn btn-primary">Click here</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 device-card">
+                <div class="card">
+                    <div class="card-body">
                         <h3 class="card-title">Manage technicians</h3>
                         <p class="card-text">CRUD technicians</p>
                         <a href="/services/index" class="btn btn-primary">Click here</a>
