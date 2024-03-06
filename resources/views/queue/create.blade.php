@@ -3,9 +3,12 @@
 <div class="container">
     {!! Form::open(['route' => 'queue.store', 'class' => 'form-control', 'method' => 'post']) !!}
     {!! Form::hidden('date_placed', \Carbon\Carbon::now(), ['style' => 'display: none;']) !!}
-    {!! Form::hidden('customer_id', '1') !!}
+    {!! Form::hidden('user_id', $user->id) !!}
+    {!! Form::hidden('email', $user->email) !!}
     {{ Form::label('customer_name', 'Customer Name', ['class' => 'form-control']) }}
-    {!! Form::text('customer_name') !!}
+    {!! Form::text('customer_name',$user->name, ['readonly' => 'readonly']) !!}
+    {{ Form::label('phone_number', 'Phone Number', ['class' => 'form-control']) }}
+    {!! Form::text('phone_number') !!}
     {{ Form::label('scheduled_date', 'Date of appointment', ['class' => 'form-control']) }}
     {!! Form::date('scheduled_date') !!}
     @foreach($deviceServices as $deviceService)

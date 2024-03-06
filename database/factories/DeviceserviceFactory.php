@@ -19,7 +19,7 @@ class DeviceserviceFactory extends Factory
         return [
             'device_id' => $this->faker->numberBetween(1,4),
             'device_type' => $this->faker->word(),
-            'Service_id' => $this->faker->numberBetween(1,9),
+            'Service_id' => $this->faker->numberBetween(1,6),
             'service_type' => $this->faker->word(),
         ];
     }
